@@ -39,5 +39,17 @@ class Artist
     return result.first
   end
 
+  def self.update(options)
+    sql = "UPDATE artists SET
+            name = '#{options[:name]}'
+            WHERE id = #{options['id']}
+    "
+    SqlRunner.run(sql)
+  end
+
+  def self.destroy(id)
+    sql = "DELETE FROM artists WHERE id = #{id}"
+    SqlRunner.run(sql)
+  end
 
 end
