@@ -1,7 +1,7 @@
-require('sinatra')
-require('sinatra/contrib/all') if development?
-require('pry-byebug')
-require_relative('../models/album')
+# require('sinatra')
+# require('sinatra/contrib/all') if development?
+# require('pry-byebug')
+# require_relative('../models/album')
 
 # get '/hello' do
 #   return 'Hello World'
@@ -9,32 +9,33 @@ require_relative('../models/album')
 
 get '/albums/new' do
   #NEW
+  @artists = Artist.all()
   erb(:alb_new)
 end
 
 get '/albums' do
-  @album = Artist.all()
+  @albums = Album.all()
   erb (:alb_index)
 end
 
 post '/albums' do
-  @album = Album.new(params)
-  @album.save
+  @albums = Album.new(params)
+  @albums.save
   erb(:alb_create)
 end
 
 get '/albums/:id' do
-  @album = Album.find( params[:id] )
+  @albums = Album.find( params[:id] )
   erb(:alb_show)
 end
 
-get 'albums/:id/edit' do
-  @album = Album.find(params[:id])
-  rb(:alb_edit)
+get '/albums/:id/edit' do
+  @albums = Album.find(params[:id])
+  erb(:alb_edit)
 end
 
 put '/albums/:id' do
-  @album = Album.update(params)
+  @albums = Album.update(params)
   redirect to( "/albums/#{params[:id]}")
 end
 

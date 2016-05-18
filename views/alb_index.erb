@@ -1,0 +1,7 @@
+<h2>Album list</h2>
+
+<% @albums.each do |album| %>
+  <b>Name:</b>
+  <p><a href="/albums/<%= album.id %>"><%= album.name %></a></p>
+
+  <% end%>
