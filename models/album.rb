@@ -35,9 +35,9 @@ class Album
   end
 
   def self.find(id)
-    sql = "SELECT * FROM artists WHERE id =#{id}"
-    artists = SqlRunner.run( sql )
-    result = artists.map { |a| Album.new( a ) }
+    sql = "SELECT * FROM albums WHERE id =#{id}"
+    albums = SqlRunner.run( sql )
+    result = albums.map { |a| Album.new( a ) }
     return result.first
   end
 

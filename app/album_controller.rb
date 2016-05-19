@@ -31,6 +31,7 @@ end
 
 get '/albums/:id/edit' do
   @albums = Album.find(params[:id])
+  # binding.pry
   erb(:alb_edit)
 end
 
